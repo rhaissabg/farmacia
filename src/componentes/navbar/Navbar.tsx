@@ -7,11 +7,11 @@ function Navbar() {
         <>
             <div className="bg-purple-500 flex justify-center">
                 <div className="container py-4 px-8 flex justify-between items-center">
-                    <h1 className="text-4xl font-bold text-white">Vida Plena</h1>
+                    <Link to='/home' className="text-4xl font-bold text-white">Vida Plena</Link>
                     <div className="flex justify-center gap-6 text-xl text-white">
                         <Link to='/home' className="hover:underline">Home</Link>
-                        <p className="hover:underline">Categorias</p>
-                        <p className="hover:underline">Remédios</p>
+                        <Link to='/categorias' className="hover:underline">Categorias</Link>
+                        <Link to='/cadastrar' className="hover:underline">Cadastrar Categoria</Link>
                     </div>
                 </div>
             </div>
