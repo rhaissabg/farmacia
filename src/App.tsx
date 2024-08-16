@@ -6,12 +6,15 @@ import Home from './paginas/home/Home'
 import ListarCategorias from './componentes/categorias/listarCategorias/ListarCategorias'
 import FormCategorias from './componentes/categorias/formCategorias/FormCategorias'
 import DeletarCategoria from './componentes/categorias/deletarCategoria/DeletarCategoria'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+        <ToastContainer />
         <Navbar />
         <div className='min-h-[80.8vh]'>
           <Routes>

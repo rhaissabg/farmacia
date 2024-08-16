@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Categorias from "../../../models/categorias/Categorias";
 import { useNavigate, useParams } from "react-router-dom";
 import { atualizar, cadastrar, listar } from "../../../services/service";
+import { ToastAlerta } from "../../../util/ToastAlerta";
 
 function FormCategorias() {
     const [categorias, setCategorias] = useState<Categorias>({} as Categorias);
@@ -18,6 +19,10 @@ function FormCategorias() {
         }
     }, [id]);
 
+    function retornar() {
+        navigate('/categorias');
+    }
+
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         setCategorias({
             ...categorias,
@@ -31,23 +36,20 @@ function FormCategorias() {
         if (id !== undefined) {
             try {
                 await atualizar(`/categorias`, categorias, setCategorias);
-                alert('Categoria atualizada com sucesso');
+                ToastAlerta('Categoria atualizada com sucesso', 'sucesso');
                 retornar();
             } catch (error: any) {
-                alert('Erro ao atualizar a categoria');
+                ToastAlerta('Erro ao atualizar a categoria', 'erro');
             }
         } else {
             try {
                 await cadastrar(`/categorias`, categorias, setCategorias);
-                alert('Categoria cadastrada com sucesso');
+                ToastAlerta('Categoria cadastrada com sucesso', 'sucesso');
+                retornar();
             } catch (error: any) {
-                alert('Erro ao cadastrar a categoria');
+                ToastAlerta('Erro ao cadastrar a categoria', 'erro');
             }
         }
-    }
-
-    function retornar() {
-        navigate('/categorias');
     }
 
     return (

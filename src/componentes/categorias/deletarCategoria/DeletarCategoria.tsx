@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Categorias from "../../../models/categorias/Categorias";
 import { useNavigate, useParams } from "react-router-dom";
 import { deletar, listar } from "../../../services/service";
+import { ToastAlerta } from "../../../util/ToastAlerta";
 
 function DeletarCategoria() {
 
@@ -15,7 +16,7 @@ function DeletarCategoria() {
         try {
             await listar(`/categorias/${id}`, setCategorias);
         } catch {
-            alert("Não foi possível excluir essa categoria, tente novamente.");
+            ToastAlerta("Não foi possível excluir essa categoria, tente novamente.", 'info');
         }
     }
 
@@ -32,10 +33,10 @@ function DeletarCategoria() {
     async function deletarCategoria() {
         try {
             await deletar(`/categorias/${id}`);
-            alert("Categoria deletada com sucesso");
+            ToastAlerta("Categoria deletada com sucesso", 'sucesso');
             navigate('/categorias')
         } catch {
-            alert("Erro ao deletar categoria");
+            ToastAlerta("Erro ao deletar categoria", 'erro');
         }
     }
 
