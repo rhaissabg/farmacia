@@ -60,12 +60,21 @@ function FormCategorias() {
 
             <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovaCategoria}>
                 <div className="flex flex-col gap-2">
+                    <label htmlFor="nome">Nome da categoria</label>
+                    <input
+                        type="text"
+                        placeholder="Nome"
+                        name='nome'
+                        value={categorias.nome || ''}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        className="border-2 border-slate-700 rounded p-2"
+                    />
                     <label htmlFor="descricao">Descrição da categoria</label>
                     <input
                         type="text"
                         placeholder="Descrição"
-                        name='nome'
-                        value={categorias.nome || ''}
+                        name='descricao'
+                        value={categorias.descricao || ''}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         className="border-2 border-slate-700 rounded p-2"
                     />
